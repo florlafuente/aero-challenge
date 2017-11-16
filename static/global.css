@@ -1,0 +1,58 @@
+@font-face {
+  font-family: SourceSansPro-Regular;
+  src: url(./fonts/SourceSansPro-Regular.ttf);
+}
+
+@font-face {
+  font-family: SourceSansPro-Bold;
+  src: url(./fonts/SourceSansPro-Bold.ttf);
+}
+
+
+:root {
+  /* COLOURS */
+  --white: #fff;
+  --black: #000;
+  --gray: #ededed;
+  --light-gray: #a3a3a3;
+  --dark-gray: #616161;
+
+  /* FONTS */
+  --regular: 'SourceSansPro-Regular';
+  --bold: 'SourceSansPro-Bold';
+  
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--regular), 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--black);
+}
+
+body {
+  width: 100vw;
+  background-color: #fff;
+}
+
+h1 {
+  color: var(--white);
+  font-family: var(--bold);
+  font-size: 6.4rem;
+}
+
+header {
+  background-image: url('./assets/header-x1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 421px;
+  width: 100vw;
+}
+
+nav {
+  height: 50px;
+  padding: 22px 42px;
+  width: 100%;
+}
