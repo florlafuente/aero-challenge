@@ -14,6 +14,12 @@ const ProductCard = ( { canRedeem }) => (
         <img src='../static/assets/icons/coin.svg' alt='Gold coin icon' className='coin-icon'/>
       </div>
     }
+    <div className='product-card-overlay'>
+      <div className='product-card-overlay-container'>
+        <span className='coin-text'>12000</span>
+        <span className='points-coin'></span>
+      </div>
+    </div>
     <style jsx>{`
       .product-card{
         background-color: var(--white);
@@ -71,6 +77,44 @@ const ProductCard = ( { canRedeem }) => (
       .cant-redeem-container .coin-icon {
         height: 20px;
         width: 20px;
+      }
+      .product-card-overlay {
+        background-image:linear-gradient(-180deg, #0ad4fa 0%, #25bbf1 100%);
+        bottom: 0;
+        box-shadow:0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+        cursor: pointer;
+        display: block;
+        height: 100%;
+        left: 0;
+        opacity: 0.7;
+        padding: 100px 24px 77px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        z-index: 2; 
+        
+      }
+      .product-card:hover .product-card-overlay {
+        display: block;
+      }
+      .product-card:hover .cant-redeem-container {
+        display: none;
+      }
+      .product-card:hover .buy-blue {
+        display: none;
+      }
+      .coin-text {
+        font-size:3.6rem;
+        color: var(--white);
+        letter-spacing:-0.008rem;
+        opacity: 1;
+      }
+      .points-coin {
+        background-image: url('../static/assets/icons/coin.svg');
+        background-size: auto 26px;
+        height: 26px;
+        width: 26px;
       }
     `}</style>
   </div>
