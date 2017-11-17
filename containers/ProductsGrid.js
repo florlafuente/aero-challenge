@@ -1,9 +1,9 @@
-import PageMenu from '../components/PageMenu'
+import Menu from '../components/Menu'
 
 const ProductsGrid = () => (
   <section className='products-grid'>
-    <PageMenu filter='true'/>
-    <PageMenu />
+    <Menu filter='true'/>
+    <Menu />
     <style jsx>{`
       .products-grid {
         height: 100%;

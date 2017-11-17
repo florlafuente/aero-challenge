@@ -1,7 +1,7 @@
 import Filter from './Filter.js'
 
-const PageMenu = ( {filter} ) => (
-  <nav className='page-container'>
+const Menu = ( {filter} ) => (
+  <nav className='menu-container'>
     <div className='items-number'>
       <p>16 of 32 products</p>
     </div>
@@ -15,7 +15,7 @@ const PageMenu = ( {filter} ) => (
       </button>
     </div>
     <style jsx>{`
-      .page-container {
+      .menu-container {
         align-content: center;
         border-bottom: 1px solid #d9d9d9;
         display: flex;
@@ -58,4 +58,4 @@ const PageMenu = ( {filter} ) => (
   </nav>
 )
 
-export default PageMenu
+export default Menu
