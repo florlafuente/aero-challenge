@@ -9,16 +9,15 @@ const PageMenu = ( {filter} ) => (
       <Filter />
     }
     <div className='navigation-buttons'>
-      <button>
-        <span>atras</span>
+      <button className='prev-next-btn prev'>
       </button>
-      <button>
-        <span>adelante</span>
+      <button className='prev-next-btn next'>
       </button>
     </div>
     <style jsx>{`
       .page-container {
         align-content: center;
+        border-bottom: 1px solid #d9d9d9;
         display: flex;
         height: 72px;
         padding-bottom: 24px;
@@ -34,7 +33,26 @@ const PageMenu = ( {filter} ) => (
         letter-spacing: -0.015rem;
       }
       .navigation-buttons {
+        display: flex;
+        flex-wrap; wrap;
+        justify-content: space-between;
         margin-left: auto;
+        width: 108px;
+      }
+      .prev-next-btn {
+        background: transparent;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border:1px solid #d9d9d9;
+        border-radius: 100%;
+        height: 46px;
+        width: 46px;
+      }
+      .prev-next-btn.prev {
+        background-image: url('/static/assets/icons/arrow-left.svg');
+      }
+      .prev-next-btn.next {
+        background-image: url('/static/assets/icons/arrow-right.svg');
       }
     `}</style>
   </nav>
