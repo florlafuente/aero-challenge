@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Navbar from '../containers/Navbar'
 import Header from '../containers/Header'
+import ProductsGrid from '../containers/ProductsGrid'
 
 export default () => (
   <div>
@@ -11,5 +12,6 @@ export default () => (
     </Head>
     <Navbar />
     <Header />
+    <ProductsGrid />
   </div>
 )

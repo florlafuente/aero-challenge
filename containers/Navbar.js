@@ -11,8 +11,13 @@ const Navbar = () => (
     <UserProfile name={'John Kite'} points={6000} />
     <style jsx>{`
       nav {
+        align-content: center;
+        background-color: var(--white);
         display: flex;
+        height: 80px;
         justify-content: space-between;
+        padding: 22px 42px;
+        width: 100%;
       }
     `}</style>
   </nav>

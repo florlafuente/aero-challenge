@@ -16,6 +16,7 @@
   --gray: #ededed;
   --light-gray: #a3a3a3;
   --dark-gray: #616161;
+  --light-blue: #0ad4fa;
 
   /* FONTS */
   --regular: 'SourceSansPro-Regular';
@@ -34,7 +35,7 @@
 
 body {
   width: 100vw;
-  background-color: #fff;
+  background-color: #f9f9f9;
 }
 
 h1 {
@@ -49,10 +50,4 @@ header {
   background-size: cover;
   height: 421px;
   width: 100vw;
-}
-
-nav {
-  height: 80px;
-  padding: 22px 42px;
-  width: 100%;
 }
