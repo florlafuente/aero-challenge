@@ -1,9 +1,11 @@
 import Menu from '../components/Menu'
+import ProductCard from '../components/ProductCard'
 
 const ProductsGrid = () => (
   <section className='products-grid'>
-    <Menu filter='true'/>
-    <Menu />
+    <Menu filter={true}/>
+    <ProductCard canRedeem={false}/>
+    <Menu filter={false} />
     <style jsx>{`
       .products-grid {
         height: 100%;
