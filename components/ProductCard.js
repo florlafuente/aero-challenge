@@ -16,9 +16,15 @@ const ProductCard = ( { canRedeem }) => (
     }
     <div className='product-card-overlay'>
       <div className='product-card-overlay-container'>
-        <span className='coin-text'>12000</span>
-        <span className='points-coin'></span>
+        <span className='coin-text'>12.000</span>
+        <img src='../static/assets/icons/coin.svg' alt='Golden coin' className='points-coin'/>
       </div>
+      <button className='btn'>
+        <span>
+          Redeem now
+        </span>
+      </button>
+      <img className='buy-whie' src='../static/assets/icons/buy-white.svg' alt='White shop bag icon' />
     </div>
     <style jsx>{`
       .product-card{
@@ -79,14 +85,13 @@ const ProductCard = ( { canRedeem }) => (
         width: 20px;
       }
       .product-card-overlay {
-        background-image:linear-gradient(-180deg, #0ad4fa 0%, #25bbf1 100%);
+        background-color:rgba(10,212,250,0.7);
         bottom: 0;
         box-shadow:0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
         cursor: pointer;
         display: block;
         height: 100%;
         left: 0;
-        opacity: 0.7;
         padding: 100px 24px 77px;
         position: absolute;
         right: 0;
@@ -101,6 +106,13 @@ const ProductCard = ( { canRedeem }) => (
       .product-card:hover .cant-redeem-container {
         display: none;
       }
+      .product-card-overlay-container {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+      }
       .product-card:hover .buy-blue {
         display: none;
       }
@@ -111,10 +123,26 @@ const ProductCard = ( { canRedeem }) => (
         opacity: 1;
       }
       .points-coin {
-        background-image: url('../static/assets/icons/coin.svg');
-        background-size: auto 26px;
         height: 26px;
+        margin-left: 10px;
         width: 26px;
+      }
+      .btn {
+        background-color: var(--white);
+        border-style: none;
+        border-radius: 10rem;
+        height: 42px;
+        margin-top: 11px;
+        width: 228px;
+      }
+      .btn span {
+        color: var(--dark-gray);
+        font-size:1.8rem;
+        letter-spacing:-0.004rem;
+      }
+      .buy-white {
+        height: 42px;
+        width: 42px;
       }
     `}</style>
   </div>
