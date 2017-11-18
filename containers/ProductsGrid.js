@@ -5,7 +5,7 @@ const ProductsGrid = () => (
   <section className='products-grid'>
     <Menu filter={true}/>
       <div className='product-cards-containers'>
-        <ProductCard canRedeem={false}/>
+        <ProductCard canRedeem={true}/>
       </div>
     <Menu filter={false} />
     <style jsx>{`

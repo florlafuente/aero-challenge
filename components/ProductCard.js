@@ -24,7 +24,7 @@ const ProductCard = ( { canRedeem }) => (
           Redeem now
         </span>
       </button>
-      <img className='buy-whie' src='../static/assets/icons/buy-white.svg' alt='White shop bag icon' />
+      <img className='buy-white' src='../static/assets/icons/buy-white.svg' alt='White shop bag icon' />
     </div>
     <style jsx>{`
       .product-card{
@@ -89,7 +89,7 @@ const ProductCard = ( { canRedeem }) => (
         bottom: 0;
         box-shadow:0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
         cursor: pointer;
-        display: block;
+        display: none;
         height: 100%;
         left: 0;
         padding: 100px 24px 77px;
@@ -142,6 +142,9 @@ const ProductCard = ( { canRedeem }) => (
       }
       .buy-white {
         height: 42px;
+        position: absolute;
+        right: 12px;
+        top: 12px;
         width: 42px;
       }
     `}</style>
