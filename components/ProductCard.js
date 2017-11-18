@@ -1,9 +1,9 @@
-const ProductCard = ( { canRedeem }) => (
+const ProductCard = ( { name, category, cost, img, canRedeem }) => (
   <div className='product-card'>
-    <img className='product-card-img' src='../static/assets/product-pics/AcerAspire-x1.png' />
+    <img className='product-card-img' src={img} />
     <div className='product-card-body'>
-      <h3 className='product-category'>Phones</h3>
-      <h2 className='product-name'>iPhone8</h2>
+      <h3 className='product-category'>{category}</h3>
+      <h2 className='product-name'>i{name}</h2>
     </div>
     {canRedeem &&
       <img className='buy-blue' src='../static/assets/icons/buy-blue.svg' alt='Blue shop bag icon' />
@@ -16,7 +16,7 @@ const ProductCard = ( { canRedeem }) => (
     }
     <div className='product-card-overlay'>
       <div className='product-card-overlay-container'>
-        <span className='coin-text'>12.000</span>
+        <span className='coin-text'>{cost}</span>
         <img src='../static/assets/icons/coin.svg' alt='Golden coin' className='points-coin'/>
       </div>
       <button className='btn'>
@@ -31,6 +31,7 @@ const ProductCard = ( { canRedeem }) => (
         background-color: var(--white);
         box-shadow:2px 2px 4px 0 rgba(0,0,0,0.10);
         height: 276px;
+        margin-bottom: 24px;
         padding: 12px 12px 18px;
         position: relative;
         width: 276px;

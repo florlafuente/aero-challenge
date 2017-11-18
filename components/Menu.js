@@ -1,9 +1,10 @@
 import Filter from './Filter.js'
 
-const Menu = ( {filter} ) => (
+const Menu = ( {productsQuantity, filter} ) => (
   <nav className='menu-container'>
     <div className='items-number'>
-      <p>16 of 32 products</p>
+      <p>XX of {productsQuantity} products</p>
+      }
     </div>
     {filter &&
       <Filter />

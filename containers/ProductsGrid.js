@@ -1,11 +1,13 @@
 import Menu from '../components/Menu'
 import ProductCard from '../components/ProductCard'
 
-const ProductsGrid = () => (
+const ProductsGrid = ( { products } ) => (
   <section className='products-grid'>
-    <Menu filter={true}/>
+    <Menu productsQuantity={products.length} filter={true}/>
       <div className='product-cards-containers'>
-        <ProductCard canRedeem={true}/>
+        {products.map((p,i)=> (
+          <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} canRedeem={true}/>
+        ))}
       </div>
     <Menu filter={false} />
     <style jsx>{`
@@ -15,7 +17,12 @@ const ProductsGrid = () => (
         width: 100%;
       }
       .product-cards-containers {
-        padding: 42px 0 60px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 42px 0 36px;
+        width: 100%;
       }
     `}</style>
   </section>
