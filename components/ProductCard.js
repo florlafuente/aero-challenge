@@ -1,16 +1,17 @@
-const ProductCard = ( { name, category, cost, img, canRedeem }) => (
+const ProductCard = ( { name, category, cost, img, userPoints }) => (
   <div className='product-card'>
+    {console.log(userPoints)}
     <img className='product-card-img' src={img} />
     <div className='product-card-body'>
       <h3 className='product-category'>{category}</h3>
       <h2 className='product-name'>i{name}</h2>
     </div>
-    {canRedeem &&
+    {cost <= userPoints &&
       <img className='buy-blue' src='../static/assets/icons/buy-blue.svg' alt='Blue shop bag icon' />
     }
-    {!canRedeem &&
+    {cost > userPoints &&
       <div className='cant-redeem-container'>
-        <p className='need-text'>You need 8400</p>
+        <p className='need-text'>You need {cost -  userPoints}</p>
         <img src='../static/assets/icons/coin.svg' alt='Gold coin icon' className='coin-icon'/>
       </div>
     }
