@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-unfetch'
 
-export function redeemProduct() {
+export function redeemProduct(id) {
   return fetch('https://aerolab-challenge.now.sh/redeem', {
     method: 'POST',
     headers: {

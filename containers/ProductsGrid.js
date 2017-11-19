@@ -1,12 +1,12 @@
 import Menu from '../components/Menu'
 import ProductCard from '../components/ProductCard'
 
-const ProductsGrid = ( { products, userPoints } ) => (
+const ProductsGrid = ( { products, userPoints, redeemProduct } ) => (
   <section className='products-grid'>
     <Menu productsQuantity={products.length} filter={true}/>
       <div className='product-cards-containers'>
         {products.map((p,i)=> (
-          <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} id={p._id} userPoints={userPoints} />
+          <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} id={p._id} userPoints={userPoints} redeemProduct={redeemProduct}/>
         ))}
       </div>
     <Menu productsQuantity={products.length} filter={false} />

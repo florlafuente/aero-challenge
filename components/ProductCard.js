@@ -1,5 +1,6 @@
-const ProductCard = ( { name, category, cost, img, id, userPoints }) => (
+const ProductCard = ( { name, category, cost, img, id, userPoints, redeemProduct }) => (
   <div className='product-card'>
+    {console.log(redeemProduct)}
     <img className='product-card-img' src={img} />
     <div className='product-card-body'>
       <h3 className='product-category'>{category}</h3>
@@ -19,7 +20,7 @@ const ProductCard = ( { name, category, cost, img, id, userPoints }) => (
         <span className='coin-text'>{cost}</span>
         <img src='../static/assets/icons/coin.svg' alt='Golden coin' className='points-coin'/>
       </div>
-      <button className='btn'>
+      <button className='btn' onClick={redeemProduct(id)}>
         <span>
           Redeem now
         </span>
