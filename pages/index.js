@@ -1,8 +1,9 @@
-import fetch from 'isomorphic-unfetch'
 import Head from 'next/head'
 import Navbar from '../containers/Navbar'
 import Header from '../containers/Header'
 import ProductsGrid from '../containers/ProductsGrid'
+import { getUserInfo } from '../api/getUserInfo.js'
+import { getProducts } from '../api/getProducts.js'
 
 const Index = ( { user, products }) => (
   <div>
@@ -18,24 +19,10 @@ const Index = ( { user, products }) => (
 )
 
 Index.getInitialProps = async function() {
-  const gettingUser = await fetch('https://aerolab-challenge.now.sh/user/me', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBjZjI3ZWU0OTYwMDAwNjBkMDBhYzQiLCJpYXQiOjE1MTA3OTc5NTB9.E1yF6dRIx3QNPbexT7ujlWFG2pE1tj7pQCNXmPE8NyQ'
-    }
-  })
+  const gettingUser = await getUserInfo()
   const userInfo = await gettingUser.json()
-  const allProductsFetch = await fetch('https://aerolab-challenge.now.sh/products', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBjZjI3ZWU0OTYwMDAwNjBkMDBhYzQiLCJpYXQiOjE1MTA3OTc5NTB9.E1yF6dRIx3QNPbexT7ujlWFG2pE1tj7pQCNXmPE8NyQ'
-    }
-  })
-  const allProducts = await allProductsFetch.json()
+  const gettingProducts = await  getProducts()
+  const allProducts = await gettingProducts.json()
   return {
     user: userInfo,
     products: allProducts

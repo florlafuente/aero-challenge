@@ -6,7 +6,7 @@ const ProductsGrid = ( { products, userPoints } ) => (
     <Menu productsQuantity={products.length} filter={true}/>
       <div className='product-cards-containers'>
         {products.map((p,i)=> (
-          <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} userPoints={userPoints} />
+          <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} id={p._id} userPoints={userPoints} />
         ))}
       </div>
     <Menu productsQuantity={products.length} filter={false} />

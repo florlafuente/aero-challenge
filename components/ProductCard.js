@@ -1,6 +1,5 @@
-const ProductCard = ( { name, category, cost, img, userPoints }) => (
+const ProductCard = ( { name, category, cost, img, id, userPoints }) => (
   <div className='product-card'>
-    {console.log(userPoints)}
     <img className='product-card-img' src={img} />
     <div className='product-card-body'>
       <h3 className='product-category'>{category}</h3>
