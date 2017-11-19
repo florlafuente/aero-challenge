@@ -1,10 +1,9 @@
-const ProductCard = ( { name, category, cost, img, id, userPoints, redeemProduct }) => (
+const ProductCard = ( { name, category, cost, img, id, userPoints }) => (
   <div className='product-card'>
-    {console.log(redeemProduct)}
     <img className='product-card-img' src={img} />
     <div className='product-card-body'>
       <h3 className='product-category'>{category}</h3>
-      <h2 className='product-name'>i{name}</h2>
+      <h2 className='product-name'>{name}</h2>
     </div>
     {cost <= userPoints &&
       <img className='buy-blue' src='../static/assets/icons/buy-blue.svg' alt='Blue shop bag icon' />
@@ -20,7 +19,7 @@ const ProductCard = ( { name, category, cost, img, id, userPoints, redeemProduct
         <span className='coin-text'>{cost}</span>
         <img src='../static/assets/icons/coin.svg' alt='Golden coin' className='points-coin'/>
       </div>
-      <button className='btn' onClick={redeemProduct(id)}>
+      <button className='btn' onClick={()=>redeemProduct()}>
         <span>
           Redeem now
         </span>

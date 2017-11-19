@@ -4,7 +4,6 @@ import Header from '../containers/Header'
 import ProductsGrid from '../containers/ProductsGrid'
 import { getUserInfo } from '../api/getUserInfo.js'
 import { getProducts } from '../api/getProducts.js'
-import { redeemProduct } from '../api/redeemProduct.js'
 
 const Index = ( { user, products, redeemProduct }) => (
   <div>
@@ -24,11 +23,10 @@ Index.getInitialProps = async function() {
   const userInfo = await gettingUser.json()
   const gettingProducts = await  getProducts()
   const allProducts = await gettingProducts.json()
-  const redeemingProduct = redeemProduct
+
   return {
     user: userInfo,
-    products: allProducts,
-    redeemProduct: redeemingProduct
+    products: allProducts
   }
 }
 
