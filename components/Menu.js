@@ -4,7 +4,6 @@ const Menu = ( {productsQuantity, filter} ) => (
   <nav className='menu-container'>
     <div className='items-number'>
       <p>XX of {productsQuantity} products</p>
-      }
     </div>
     {filter &&
       <Filter />

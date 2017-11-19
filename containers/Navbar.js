@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import UserProfile from '../components/UserProfile'
 
-const Navbar = () => (
+const Navbar = ( {user} ) => (
   <nav>
     <Link href='/'>
       <a className='kite'>
         <img src='../static/assets/aerolab-logo.svg' alt='Aerolab' />
       </a>
     </Link>
-    <UserProfile name={'John Kite'} points={6000} />
+    <UserProfile name={user.name} points={user.points} />
     <style jsx>{`
       nav {
         align-content: center;

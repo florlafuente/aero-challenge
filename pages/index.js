@@ -4,21 +4,21 @@ import Navbar from '../containers/Navbar'
 import Header from '../containers/Header'
 import ProductsGrid from '../containers/ProductsGrid'
 
-const Index = ( { products }) => (
+const Index = ( { user, products }) => (
   <div>
     <Head>
       <title>Aerolab Coding Challenge</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="stylesheet" type="text/css" href="/static/global.css" />
     </Head>
-    <Navbar />
+    <Navbar user={user}/>
     <Header />
-    <ProductsGrid products={products} />
+    <ProductsGrid products={products} redeemHistory={user.redeemHistory} userPoints={user.points}  />
   </div>
 )
 
 Index.getInitialProps = async function() {
-  const res = await fetch('https://aerolab-challenge.now.sh/products', {
+  const gettingUser = await fetch('https://aerolab-challenge.now.sh/user/me', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -26,9 +26,19 @@ Index.getInitialProps = async function() {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBjZjI3ZWU0OTYwMDAwNjBkMDBhYzQiLCJpYXQiOjE1MTA3OTc5NTB9.E1yF6dRIx3QNPbexT7ujlWFG2pE1tj7pQCNXmPE8NyQ'
     }
   })
-  const products = await res.json()
+  const userInfo = await gettingUser.json()
+  const allProductsFetch = await fetch('https://aerolab-challenge.now.sh/products', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBjZjI3ZWU0OTYwMDAwNjBkMDBhYzQiLCJpYXQiOjE1MTA3OTc5NTB9.E1yF6dRIx3QNPbexT7ujlWFG2pE1tj7pQCNXmPE8NyQ'
+    }
+  })
+  const allProducts = await allProductsFetch.json()
   return {
-    products: products
+    user: userInfo,
+    products: allProducts
   }
 }
 

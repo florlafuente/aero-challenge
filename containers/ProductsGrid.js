@@ -9,7 +9,7 @@ const ProductsGrid = ( { products } ) => (
           <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} canRedeem={true}/>
         ))}
       </div>
-    <Menu filter={false} />
+    <Menu productsQuantity={products.length} filter={false} />
     <style jsx>{`
       .products-grid {
         height: 100%;
