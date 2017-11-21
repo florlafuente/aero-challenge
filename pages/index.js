@@ -4,8 +4,9 @@ import Header from '../containers/Header'
 import ProductsGrid from '../containers/ProductsGrid'
 import { getUserInfo } from '../api/getUserInfo.js'
 import { getProducts } from '../api/getProducts.js'
+import { redeemHistory } from '../api/redeemHistory.js'
 
-const Index = ( { user, products, redeemProduct }) => (
+const Index = ( { user, products, redeemProduct, redeemHistory }) => (
   <div>
     <Head>
       <title>Aerolab Coding Challenge</title>
@@ -14,19 +15,22 @@ const Index = ( { user, products, redeemProduct }) => (
     </Head>
     <Navbar user={user}/>
     <Header />
-    <ProductsGrid products={products} redeemHistory={user.redeemHistory} userPoints={user.points} redeemProduct={redeemProduct} />
+    <ProductsGrid products={products} redeemHistory={redeemHistory} userPoints={user.points} />
   </div>
 )
 
 Index.getInitialProps = async function() {
   const gettingUser = await getUserInfo()
   const userInfo = await gettingUser.json()
-  const gettingProducts = await  getProducts()
+  const gettingProducts = await getProducts()
   const allProducts = await gettingProducts.json()
+  const gettingHistory = await redeemHistory()
+  const redeemHistorial = await gettingHistory.json()
 
   return {
     user: userInfo,
-    products: allProducts
+    products: allProducts,
+    redeemHistory: redeemHistorial
   }
 }
 

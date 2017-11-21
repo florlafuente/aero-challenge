@@ -6,22 +6,33 @@ class ProductsGrid extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      products : [],
+      products : null,
       page : 1,
       productsPerPage : 8
     }
   }
 
+  componentWillMount() {
+    const redeemHistory = []
+    this.props.redeemHistory.forEach((pr)=> {
+      redeemHistory.push(pr.name)
+    })
+    const filteredProducts = this.props.products.filter((pr)=>{
+      return !redeemHistory.includes(pr.name)
+    })
+    this.setState({products: filteredProducts})
+  }
+
   render () {
     return (
       <section className='products-grid'>
-        <Menu productsQuantity={this.props.products.length} filter={true}/>
+        <Menu productsQuantity={this.state.products.length} filter={true}/>
         <div className='product-cards-containers'>
-          {this.props.products.map((p,i)=> (
+          {this.state.products.map((p,i)=> (
             <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} id={p._id} userPoints={this.props.userPoints} />
           ))}
         </div>
-        <Menu productsQuantity={this.props.products.length} filter={false} />
+        <Menu productsQuantity={this.state.products.length} filter={false} />
         <style jsx>{`
           .products-grid {
             height: 100%;
