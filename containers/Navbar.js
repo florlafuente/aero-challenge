@@ -3,7 +3,6 @@ import UserProfile from '../components/UserProfile'
 
 const Navbar = ( {user} ) => (
   <nav>
-    {console.log(user.redeemHistory)}
     <Link href='/'>
       <a className='kite'>
         <img src='../static/assets/aerolab-logo.svg' alt='Aerolab' />
