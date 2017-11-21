@@ -23,16 +23,24 @@ class ProductsGrid extends Component {
     this.setState({products: filteredProducts})
   }
 
+  handleBackPagination () {
+    this.setState({page: this.state.page - 1}, () => console.log(this.state.page))
+  }
+
+  handleForwardPagination () {
+    this.setState({page: this.state.page + 1}, () => console.log(this.state.page))
+  }
+
   render () {
     return (
       <section className='products-grid'>
-        <Menu productsQuantity={this.state.products.length} filter={true}/>
+        <Menu productsQuantity={this.state.products.length} filter={true} handleBackPagination={this.handleBackPagination.bind(this)} handleForwardPagination={this.handleForwardPagination.bind(this)} page={this.state.page} />
         <div className='product-cards-containers'>
           {this.state.products.map((p,i)=> (
             <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} id={p._id} userPoints={this.props.userPoints} />
           ))}
         </div>
-        <Menu productsQuantity={this.state.products.length} filter={false} />
+        <Menu productsQuantity={this.state.products.length} filter={false} handleBackPagination={this.handleBackPagination.bind(this)} handleForwardPagination={this.handleForwardPagination.bind(this)} page={this.state.page}/>
         <style jsx>{`
           .products-grid {
             height: 100%;

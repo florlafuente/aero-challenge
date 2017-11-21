@@ -1,6 +1,6 @@
 import Filter from './Filter.js'
 
-const Menu = ( {productsQuantity, filter} ) => (
+const Menu = ( { productsQuantity, filter, handleBackPagination, handleForwardPagination, page } ) => (
   <nav className='menu-container'>
     <div className='items-number'>
       <p>XX of {productsQuantity} products</p>
@@ -9,9 +9,9 @@ const Menu = ( {productsQuantity, filter} ) => (
       <Filter />
     }
     <div className='navigation-buttons'>
-      <button className='prev-next-btn prev'>
+      <button className='prev-next-btn prev' onClick={handleBackPagination} disabled={page===1}>
       </button>
-      <button className='prev-next-btn next'>
+      <button className='prev-next-btn next' onClick={handleForwardPagination}>
       </button>
     </div>
     <style jsx>{`
@@ -53,6 +53,9 @@ const Menu = ( {productsQuantity, filter} ) => (
       }
       .prev-next-btn.next {
         background-image: url('/static/assets/icons/arrow-right.svg');
+      }
+      .prev-next-btn:disabled {
+        visibility: hidden;
       }
     `}</style>
   </nav>
