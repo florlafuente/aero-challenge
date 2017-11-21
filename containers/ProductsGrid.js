@@ -27,11 +27,11 @@ class ProductsGrid extends Component {
   }
 
   handleBackPagination () {
-    this.setState({page: this.state.page - 1}, this.pagination())
+    this.setState({page: this.state.page - 1}, () => this.pagination())
   }
 
   handleForwardPagination () {
-    this.setState({page: this.state.page + 1}, this.pagination())
+    this.setState({page: this.state.page + 1}, () => this.pagination())
   }
 
   pagination () {
