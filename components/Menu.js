@@ -1,17 +1,19 @@
 import Filter from './Filter.js'
 
-const Menu = ( { productsQuantity, filter, handleBackPagination, handleForwardPagination, page, productNumber } ) => (
+const Menu = (props) => (
   <nav className='menu-container'>
     <div className='items-number'>
-      <p>{productNumber} of {productsQuantity} products</p>
+      <p>{props.productNumber} of {props.productsQuantity} products</p>
     </div>
-    {filter &&
-      <Filter />
+    {props.filter &&
+      <Filter sortByDate={props.sortByDate} 
+        sortByLowPrice={props.sortByLowPrice}
+        sortByHighPrice={props.sortByHighPrice} />
     }
     <div className='navigation-buttons'>
-      <button className='prev-next-btn prev' onClick={handleBackPagination} disabled={page===1}>
+      <button className='prev-next-btn prev' onClick={props.handleBackPagination} disabled={props.page===1}>
       </button>
-      <button className='prev-next-btn next' onClick={handleForwardPagination} disabled={productNumber >= productsQuantity}>
+      <button className='prev-next-btn next' onClick={props.handleForwardPagination} disabled={props.productNumber >= props.productsQuantity}>
       </button>
     </div>
     <style jsx>{`

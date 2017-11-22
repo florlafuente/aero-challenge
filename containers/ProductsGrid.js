@@ -46,16 +46,41 @@ class ProductsGrid extends Component {
     })
   }
 
+  sortByDate() {
+    console.log(this.state.totalProducts)
+  }
+
+  sortByLowPrice() {
+    console.log(this.state.totalProducts)
+  }
+
+  sortByHighPrice() {
+    console.log(this.state.totalProducts)
+  }
+
   render () {
     return (
       <section className='products-grid'>
-        <Menu productsQuantity={this.state.totalProducts.length} filter={true} handleBackPagination={this.handleBackPagination.bind(this)} handleForwardPagination={this.handleForwardPagination.bind(this)} page={this.state.page} productNumber={this.state.lastProductNumber} />
+        <Menu productsQuantity={this.state.totalProducts.length} 
+          filter={true} 
+          handleBackPagination={this.handleBackPagination.bind(this)} 
+          handleForwardPagination={this.handleForwardPagination.bind(this)} 
+          page={this.state.page} 
+          productNumber={this.state.lastProductNumber} 
+          sortByDate={this.sortByDate.bind(this)} 
+          sortByHighPrice={this.sortByHighPrice.bind(this)} 
+          sortByLowPrice={this.sortByLowPrice.bind(this)} />
         <div className='product-cards-containers'>
           {this.state.currentProducts.map((p,i)=> (
             <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} id={p._id} userPoints={this.props.userPoints} />
           ))}
         </div>
-        <Menu productsQuantity={this.state.totalProducts.length} filter={false} handleBackPagination={this.handleBackPagination.bind(this)} handleForwardPagination={this.handleForwardPagination.bind(this)} page={this.state.page} productNumber={this.state.lastProductNumber}/>
+        <Menu productsQuantity={this.state.totalProducts.length} 
+              filter={false} 
+              handleBackPagination={this.handleBackPagination.bind(this)} 
+              handleForwardPagination={this.handleForwardPagination.bind(this)} 
+              page={this.state.page} 
+              productNumber={this.state.lastProductNumber} />
         <style jsx>{`
           .products-grid {
             height: 100%;
