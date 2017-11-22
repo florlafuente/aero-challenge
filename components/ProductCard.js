@@ -6,8 +6,7 @@ class ProductCard extends Component {
   }
 
   handleSubmit = () =>  {
-    console.log(JSON.stringify({'productId': this.props.id}))
-    /*fetch('https://aerolab-challenge.now.sh/redeem', {
+    fetch('https://aerolab-challenge.now.sh/redeem', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -17,8 +16,8 @@ class ProductCard extends Component {
     body: JSON.stringify({'productId': this.props.id})
     })
     .then((res)=>res.json())
-    .then((res)=> console.log(res.body))
-    .catch(error => { console.log('request failed', error) })*/
+    .then((res)=> { console.log(res) })
+    .catch(error => { console.log('request failed', error) })
   }
 
   render () {

@@ -9,9 +9,11 @@ class ProductsGrid extends Component {
       totalProducts : null,
       currentProducts: null,
       page : 1,
-      productsPerPage : 16
+      productsPerPage : 16,
+      lastProductNumber: null
     }
   }
+  
   componentWillMount() {
     const redeemHistory = []
     this.props.redeemHistory.forEach((pr)=> {
@@ -22,7 +24,8 @@ class ProductsGrid extends Component {
     })
     this.setState({
       totalProducts: filteredProducts,
-      currentProducts: filteredProducts.slice(0, 16)
+      currentProducts: filteredProducts.slice(0, 16),
+      lastProductNumber: 16
     })
   }
 
@@ -37,19 +40,22 @@ class ProductsGrid extends Component {
   pagination () {
     const indexOfLastProduct = this.state.page * this.state.productsPerPage
     const indexOfFirstProduct = indexOfLastProduct - this.state.productsPerPage
-    this.setState({currentProducts: this.state.totalProducts.slice(indexOfFirstProduct, indexOfLastProduct)})
+    this.setState({
+      currentProducts: this.state.totalProducts.slice(indexOfFirstProduct, indexOfLastProduct),
+      lastProductNumber:  (this.state.totalProducts.length >= indexOfLastProduct ? indexOfLastProduct : this.state.totalProducts.length)
+    })
   }
 
   render () {
     return (
       <section className='products-grid'>
-        <Menu productsQuantity={this.state.totalProducts.length} filter={true} handleBackPagination={this.handleBackPagination.bind(this)} handleForwardPagination={this.handleForwardPagination.bind(this)} page={this.state.page} />
+        <Menu productsQuantity={this.state.totalProducts.length} filter={true} handleBackPagination={this.handleBackPagination.bind(this)} handleForwardPagination={this.handleForwardPagination.bind(this)} page={this.state.page} productNumber={this.state.lastProductNumber} />
         <div className='product-cards-containers'>
           {this.state.currentProducts.map((p,i)=> (
             <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} id={p._id} userPoints={this.props.userPoints} />
           ))}
         </div>
-        <Menu productsQuantity={this.state.totalProducts.length} filter={false} handleBackPagination={this.handleBackPagination.bind(this)} handleForwardPagination={this.handleForwardPagination.bind(this)} page={this.state.page}/>
+        <Menu productsQuantity={this.state.totalProducts.length} filter={false} handleBackPagination={this.handleBackPagination.bind(this)} handleForwardPagination={this.handleForwardPagination.bind(this)} page={this.state.page} productNumber={this.state.lastProductNumber}/>
         <style jsx>{`
           .products-grid {
             height: 100%;
