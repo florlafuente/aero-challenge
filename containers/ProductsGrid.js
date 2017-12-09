@@ -47,7 +47,9 @@ class ProductsGrid extends Component {
   }
 
   sortByDate = () => {
-    console.log(this.props)
+    this.setState({
+      currentProducts: this.state.currentProducts.sort((a,b)=> {return (b.id) - (a.id)})
+    })
   }
 
   sortByLowPrice = () => {
