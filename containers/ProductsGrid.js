@@ -29,7 +29,7 @@ class ProductsGrid extends Component {
     })
   }
 
-  handleBackPagination () {
+  handleBackPagination = () => {
     this.setState({page: this.state.page - 1}, () => this.pagination())
   }
 
@@ -46,15 +46,17 @@ class ProductsGrid extends Component {
     })
   }
 
-  sortByDate() {
+  sortByDate = () => {
     console.log(this.state.totalProducts)
   }
 
-  sortByLowPrice() {
-    console.log(this.state.totalProducts)
+  sortByLowPrice = () => {
+    this.setState({
+      currentProducts: this.state.currentProducts.sort((a,b)=> {return (a.cost) - (b.cost)})
+    }, console.log(this.state.currentProducts))
   }
 
-  sortByHighPrice() {
+  sortByHighPrice = () => {
     console.log(this.state.totalProducts)
   }
 
@@ -67,9 +69,9 @@ class ProductsGrid extends Component {
           handleForwardPagination={this.handleForwardPagination.bind(this)} 
           page={this.state.page} 
           productNumber={this.state.lastProductNumber} 
-          sortByDate={this.sortByDate.bind(this)} 
-          sortByHighPrice={this.sortByHighPrice.bind(this)} 
-          sortByLowPrice={this.sortByLowPrice.bind(this)} />
+          sortByDate={this.sortByDate} 
+          sortByHighPrice={this.sortByHighPrice} 
+          sortByLowPrice={this.sortByLowPrice} />
         <div className='product-cards-containers'>
           {this.state.currentProducts.map((p,i)=> (
             <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} id={p._id} userPoints={this.props.userPoints} />

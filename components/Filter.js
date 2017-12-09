@@ -1,25 +1,24 @@
 const buttons = [
   {
     name: 'Most recent',
-    callToAction: 'props.sortByDate'
+    callToAction: 'sortByDate'
   },
   {
     name: 'Lowest price',
-    callToAction: 'props.sortByLowPrice'
+    callToAction: 'sortByLowPrice'
   },
   {
     name: 'Highest price',
-    callToAction: 'props.sortByHighPrice'
+    callToAction: 'sortByHighPrice'
   }
 ]
 
 
 const Filter = (props) => (
   <div className='filters-container'>
-    {console.log(props)}
     <p>Sort by:</p>
     {buttons.map((it, i)=> (
-      <button className='btn active' key={i} onClick={it.callToAction}>
+      <button className='btn active' key={i} onClick={props[it.callToAction]}>
         <span>{it.name}</span>
       </button>
     ))}
