@@ -15,6 +15,7 @@ class ProductsGrid extends Component {
   }
   
   componentWillMount() {
+    console.log(this.props.redeemHistory)
     const redeemHistory = []
     this.props.redeemHistory.forEach((pr)=> {
       redeemHistory.push(pr.name)
@@ -25,7 +26,7 @@ class ProductsGrid extends Component {
     this.setState({
       totalProducts: filteredProducts,
       currentProducts: filteredProducts.slice(0, 16),
-      lastProductNumber: 16
+      lastProductNumber: filteredProducts.length >= 16 ? 16 : filteredProducts.length
     })
   }
 
