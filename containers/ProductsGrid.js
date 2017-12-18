@@ -97,16 +97,28 @@ class ProductsGrid extends Component {
         <style jsx>{`
           .products-grid {
             height: 100%;
+            max-width: 1440px;
             padding: 65px 132px 74px;
             width: 100%;
           }
           .product-cards-containers {
             display: flex;
-            flex-direction: row;
             flex-wrap: wrap;
             justify-content: space-between;
             padding: 42px 0 36px;
             width: 100%;
+          }
+          @media screen and (max-width: 850px) {
+            .product-cards-containers {
+              align-items: center;
+              flex-direction: column;
+            }
+          }
+          @media screen and (max-width: 600px) {
+            .products-grid {
+              padding-left: 65px;
+              padding-right: 65px;
+            }
           }
         `}</style>
       </section>

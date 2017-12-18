@@ -55,6 +55,29 @@ const Filter = (props) => (
       .filters-container .btn.active span{
         color: var(--white);
       }
+      @media screen and (max-width: 1263px) {
+        .filters-container {
+          width: 100%;
+        }
+      }
+      @media screen and (max-width: 1202px) {
+        .filters-container {
+          align-items: center;
+          border-left: 0px;
+          border-top: 1px solid #d9d9d9;
+          flex-direction: column;
+          order: 3;
+          padding-left: 0;
+          padding-top: 24px;
+        }
+        .filters-container .btn {
+          margin-left: 0;
+          width: 100%;
+        }
+        .filters-container button:not(last-child) {
+          margin-bottom: 5px;
+        }
+      }
     `}</style>
   </div>
 )

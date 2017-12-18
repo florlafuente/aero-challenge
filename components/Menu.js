@@ -59,6 +59,30 @@ const Menu = (props) => (
       .prev-next-btn:disabled {
         visibility: hidden;
       }
+      @media screen and (max-width: 1263px) {
+        .menu-container {
+          flex-wrap: nowrap;
+          height: auto;
+        }
+      }
+      @media screen and (max-width: 1202px) {
+        .menu-container {
+          flex-wrap: wrap;
+          padding-bottom: 24px;
+        }
+        .navigation-buttons {
+           padding-bottom: 24px;
+        }
+      }
+      @media screen and (max-width: 431px) {
+        .navigation-buttons {
+          margin-left: 0;
+          width: auto;
+        }
+        .items-number p {
+          font-size: 1.8rem;
+        }
+      }
     `}</style>
   </nav>
 )

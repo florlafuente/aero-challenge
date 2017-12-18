@@ -16,6 +16,13 @@ const Index = ( { user, products, redeemProduct, redeemHistory }) => (
     <Navbar user={user}/>
     <Header />
     <ProductsGrid products={products} redeemHistory={redeemHistory} userPoints={user.points} />
+    <style jsx>{`
+      div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    `}</style>
   </div>
 )
 
