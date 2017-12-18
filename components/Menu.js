@@ -8,7 +8,8 @@ const Menu = (props) => (
     {props.filter &&
       <Filter sortByDate={props.sortByDate} 
         sortByLowPrice={props.sortByLowPrice}
-        sortByHighPrice={props.sortByHighPrice} />
+        sortByHighPrice={props.sortByHighPrice}
+        selectedFilter={props.selectedFilter} />
     }
     <div className='navigation-buttons'>
       <button className='prev-next-btn prev' onClick={props.handleBackPagination} disabled={props.page===1}>

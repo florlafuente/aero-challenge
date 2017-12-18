@@ -10,7 +10,8 @@ class ProductsGrid extends Component {
       currentProducts: null,
       page : 1,
       productsPerPage : 16,
-      lastProductNumber: null
+      lastProductNumber: null,
+      selectedFilter: ''
     }
   }
   
@@ -53,21 +54,24 @@ class ProductsGrid extends Component {
   sortByDate = () => {
     this.setState({
       totalProducts: this.state.totalProducts.sort((a,b)=> {return (b.id) - (a.id)}),
-      currentProducts: this.state.currentProducts.sort((a,b)=> {return (b.id) - (a.id)})
+      currentProducts: this.state.currentProducts.sort((a,b)=> {return (b.id) - (a.id)}),
+      selectedFilter: 'recent'
     })
   }
 
   sortByLowPrice = () => {
     this.setState({
       totalProducts: this.state.totalProducts.sort((a,b)=> {return (a.cost) - (b.cost)}),
-      currentlProducts: this.state.currentProducts.sort((a,b)=> {return (a.cost) - (b.cost)})
+      currentlProducts: this.state.currentProducts.sort((a,b)=> {return (a.cost) - (b.cost)}),
+      selectedFilter: 'low'
     })
   }
 
   sortByHighPrice = () => {
     this.setState({
       totalProducts: this.state.totalProducts.sort((a,b)=> {return (b.cost) - (a.cost)}),
-      currentProducts: this.state.currentProducts.sort((a,b)=> {return (b.cost) - (a.cost)})
+      currentProducts: this.state.currentProducts.sort((a,b)=> {return (b.cost) - (a.cost)}),
+      selectedFilter: 'high'
     })
   }
 
@@ -82,7 +86,8 @@ class ProductsGrid extends Component {
           productNumber={this.state.lastProductNumber} 
           sortByDate={this.sortByDate} 
           sortByHighPrice={this.sortByHighPrice} 
-          sortByLowPrice={this.sortByLowPrice} />
+          sortByLowPrice={this.sortByLowPrice} 
+          selectedFilter={this.state.selectedFilter} />
         <div className='product-cards-containers'>
           {this.state.currentProducts.map((p,i)=> (
             <ProductCard key={i} name={p.name} category={p.category} cost={p.cost} img={p.img.url} id={p._id} userPoints={this.props.userPoints} />
