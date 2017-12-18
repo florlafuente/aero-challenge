@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Router from 'next/router'
 
 class ProductCard extends Component {
   constructor(props) {
@@ -16,7 +17,9 @@ class ProductCard extends Component {
     body: JSON.stringify({'productId': this.props.id})
     })
     .then((res)=>res.json())
-    .then((res)=> { console.log(res) })
+    .then((res)=> { alert('Product successfully purchased')
+      Router.push({pathname: '/'})
+    })
     .catch(error => { console.log('request failed', error) })
   }
 

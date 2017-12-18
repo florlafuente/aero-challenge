@@ -1,4 +1,4 @@
-const UserProfile = ( { name, points}) => (
+const UserProfile = ( { name, points} ) => (
   <div className='user-profile'>
     <h3 className='username'>{name}</h3>
     <div className='points-counter'>
