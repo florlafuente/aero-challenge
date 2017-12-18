@@ -15,12 +15,13 @@ class ProductsGrid extends Component {
   }
   
   componentWillMount() {
-    console.log(this.props.redeemHistory)
+    //filter products already purchased
     const redeemHistory = []
     this.props.redeemHistory.forEach((pr)=> {
       redeemHistory.push(pr.name)
     })
-    const filteredProducts = this.props.products.filter((pr)=>{
+    const filteredProducts = this.props.products
+    .filter((pr)=>{
       return !redeemHistory.includes(pr.name)
     })
     this.setState({
@@ -30,15 +31,16 @@ class ProductsGrid extends Component {
     })
   }
 
+  //pagination functions
   handleBackPagination = () => {
     this.setState({page: this.state.page - 1}, () => this.pagination())
   }
 
-  handleForwardPagination () {
+  handleForwardPagination = () => {
     this.setState({page: this.state.page + 1}, () => this.pagination())
   }
 
-  pagination () {
+  pagination = () => {
     const indexOfLastProduct = this.state.page * this.state.productsPerPage
     const indexOfFirstProduct = indexOfLastProduct - this.state.productsPerPage
     this.setState({
@@ -47,20 +49,24 @@ class ProductsGrid extends Component {
     })
   }
 
+  //filter functions
   sortByDate = () => {
     this.setState({
+      totalProducts: this.state.totalProducts.sort((a,b)=> {return (b.id) - (a.id)}),
       currentProducts: this.state.currentProducts.sort((a,b)=> {return (b.id) - (a.id)})
     })
   }
 
   sortByLowPrice = () => {
     this.setState({
-      currentProducts: this.state.currentProducts.sort((a,b)=> {return (a.cost) - (b.cost)})
+      totalProducts: this.state.totalProducts.sort((a,b)=> {return (a.cost) - (b.cost)}),
+      currentlProducts: this.state.currentProducts.sort((a,b)=> {return (a.cost) - (b.cost)})
     })
   }
 
   sortByHighPrice = () => {
     this.setState({
+      totalProducts: this.state.totalProducts.sort((a,b)=> {return (b.cost) - (a.cost)}),
       currentProducts: this.state.currentProducts.sort((a,b)=> {return (b.cost) - (a.cost)})
     })
   }
@@ -84,8 +90,8 @@ class ProductsGrid extends Component {
         </div>
         <Menu productsQuantity={this.state.totalProducts.length} 
               filter={false} 
-              handleBackPagination={this.handleBackPagination.bind(this)} 
-              handleForwardPagination={this.handleForwardPagination.bind(this)} 
+              handleBackPagination={this.handleBackPagination} 
+              handleForwardPagination={this.handleForwardPagination} 
               page={this.state.page} 
               productNumber={this.state.lastProductNumber} />
         <style jsx>{`

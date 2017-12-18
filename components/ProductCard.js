@@ -22,7 +22,7 @@ class ProductCard extends Component {
 
   render () {
     return (
-      <div className='product-card'>
+      <div className={`product-card ${this.props.cost > this.props.userPoints ? 'disabled' : ''}`}>
         <img className='product-card-img' src={this.props.img} />
         <div className='product-card-body'>
           <h3 className='product-category'>{this.props.category}</h3>
@@ -37,18 +37,20 @@ class ProductCard extends Component {
             <img src='../static/assets/icons/coin.svg' alt='Gold coin icon' className='coin-icon'/>
           </div>
         }
-        <div className='product-card-overlay'>
-          <div className='product-card-overlay-container'>
-            <span className='coin-text'>{this.props.cost}</span>
-            <img src='../static/assets/icons/coin.svg' alt='Golden coin' className='points-coin'/>
+        {this.props.cost <= this.props.userPoints &&
+          <div className='product-card-overlay'>
+            <div className='product-card-overlay-container'>
+              <span className='coin-text'>{this.props.cost}</span>
+              <img src='../static/assets/icons/coin.svg' alt='Golden coin' className='points-coin'/>
+            </div>
+            <button className='btn' onClick={this.handleSubmit}>
+              <span>
+                Redeem now
+              </span>
+            </button>
+            <img className='buy-white' src='../static/assets/icons/buy-white.svg' alt='White shop bag icon' />
           </div>
-          <button className='btn' onClick={this.handleSubmit}>
-            <span>
-              Redeem now
-            </span>
-          </button>
-          <img className='buy-white' src='../static/assets/icons/buy-white.svg' alt='White shop bag icon' />
-        </div>
+        }
         <style jsx>{`
           .product-card{
             background-color: var(--white);
@@ -58,6 +60,9 @@ class ProductCard extends Component {
             padding: 12px 12px 18px;
             position: relative;
             width: 276px;
+          }
+          .product-card.disabled {
+            cursor: not-allowed;
           }
           .product-card-img {
             border-bottom: 1px solid #d9d9d9;
